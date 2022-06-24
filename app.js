@@ -1,11 +1,10 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+require("dotenv").config();
 
 const contactsRouter = require("./routes/api/contacts");
-
 const app = express();
-
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
@@ -24,3 +23,6 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
+
+// BGvFDhl00iuDE234
+// mongodb+srv://Pavel:BGvFDhl00iuDE234@cluster0.nrzbc.mongodb.net/test
