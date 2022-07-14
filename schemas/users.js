@@ -24,8 +24,13 @@ const patchSchema = Joi.object().keys({
     ),
 });
 
+const emailSchema =  Joi.object().keys({
+  email: Joi.string().pattern(emailPattern).required(),
+});
+
 module.exports = {
   signupSchema,
   loginSchema,
   patchSchema,
+  emailSchema,
 };

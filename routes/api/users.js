@@ -15,19 +15,31 @@ router.post(
   validation(usersSchemas.signupSchema),
   ctrlWrapper(ctrl.signup)
 );
+
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verifyEmail));
+
+router.post(
+  "/verify",
+  validation(usersSchemas.emailSchema),
+  ctrlWrapper(ctrl.resendVerifyEmail)
+);
+
 router.post(
   "/login",
   validation(usersSchemas.loginSchema),
   ctrlWrapper(ctrl.login)
 );
 router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrent));
+
 router.get("/logout", authenticate, ctrlWrapper(ctrl.logout));
+
 router.patch(
   "/",
   authenticate,
   validation(usersSchemas.patchSchema),
   ctrlWrapper(ctrl.changeSubscription)
 );
+
 router.patch(
   "/avatars",
   authenticate,
